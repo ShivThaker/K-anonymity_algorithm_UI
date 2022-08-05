@@ -1,0 +1,76 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>user</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <head>-->
+<!--        <title>Home page</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <h1>Hello world!!</h1>-->
+<!--        <h3>How are you doing today??</h3>-->
+<!--&lt;!&ndash;allow u to type in any variable or any information that is going to be-->
+<!--passed into this template&ndash;&gt;-->
+<!--        {% for i in content: %}-->
+<!--            <p>hello {{i}}</p>-->
+<!--        {% endfor %}-->
+<!--        <p>Another variable {{var}}</p>-->
+<!--        <br/>-->
+<!--        <p>can write python code</p>-->
+<!--        {% for x in range(10): %}-->
+<!--            {% if x%2 == 0: %}-->
+<!--                <p>hello for {{x}}</p>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--        <br/>-->
+<!--    </body>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+
+{% block content %}
+<br/>
+<h1 class="display-4">
+  User profile
+  <small class="text-muted">Click submit if you want to update the details</small>
+</h1>
+<br/>
+{% with messages = get_flashed_messages() %}
+    {% if messages: %}
+        {% for msg in messages: %}
+            <div><span class="{{alert}}" role="alert">
+                {{msg}}
+            </span></div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<br/>
+<form action="#" method="POST">
+  <div class="form-group">
+    <label for="card_no">Card number</label>
+    <input type="text" class="form-control" name="card_no" placeholder="Enter card number" value="{{card_no if card_no}}" readonly>
+  </div>
+  <div class="form-group">
+    <label for="nm">User name</label>
+    <input type="text" class="form-control" name="nm" placeholder="Enter name" value="{{nm if nm}}">
+  </div>
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <input type="text" class="form-control" name="gender" placeholder="Enter gender" value="{{gender if gender}}">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{email if email}}">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+<a href="/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go Back to Home Page</a>
+<br/>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+
+{% block content %}
+<br/>
+<h1 class="display-4">
+  User login
+  <small class="text-muted">Enter required details below</small>
+</h1>
+<br/>
+{% with messages = get_flashed_messages() %}
+    {% if messages: %}
+        {% for msg in messages: %}
+            {% if msg == 'You are not logged in' or msg == 'No account found with the given card number' or msg == 'Wrong password - login denied': %}
+            <div><span class="alert alert-danger" role="alert">
+                {{msg}}
+            </span></div>
+            {% else: %}
+            <div><span class="alert alert-success" role="alert">
+                {{msg}}
+            </span></div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<br/>
+<!--<form action="#" method="POST">-->
+<!--    <div>-->
+<!--        <label>Name: </label>-->
+<!--        <input type="text" name="nm" placeholder="Name"/>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    <div><input type="submit" value="Submit"/></div>-->
+<!--</form>-->
+<form action="#" method="POST">
+  <div class="form-group">
+    <label for="card_no">Card number</label>
+    <input type="text" class="form-control" name="card_no" placeholder="Enter card number" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Loign password</label>
+    <input type="text" class="form-control" name="password" placeholder="Enter password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+{% endblock %}

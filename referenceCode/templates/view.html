@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}View Page{% endblock %}
+
+{% block content %}
+<br/>
+    {% for item in values: %}
+        <p>ID: {{item._id}}, Name: {{item.name}}, Card no: {{item.card_no}}, Email: {{item.email}}, Password: {{item.password}}</p>
+    {% endfor %}
+<br/>
+<a href="/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go Back to Home Page</a>
+<br/>
+{% endblock %}

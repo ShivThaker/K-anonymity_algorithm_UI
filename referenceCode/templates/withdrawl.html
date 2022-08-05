@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+
+{% block content %}
+{% if not control: %}
+    <br/>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Available balance: {{balance}}</h1>
+        <p class="lead"></p>
+        <p class="lead">You are a new user, first you need to create a pin for you account</p>
+      </div>
+    </div>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+            {% for msg in messages: %}
+                <div><span class="{{alert}}" role="alert">
+                    {{msg}}
+                </span></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br/>
+{% endif %}
+<!---->
+<!---->
+{% if control: %}
+    <br/>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Available balance: {{balance}}</h1>
+        <p class="lead">Enter pin below to withdraw amount</p>
+      </div>
+    </div>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+            {% for msg in messages: %}
+                <div><span class="{{alert}}" role="alert">
+                    {{msg}}
+                </span></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br/>
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="nm">Anount </label>
+        <input type="text" class="form-control" name="amount" placeholder="Enter amount" required>
+      </div>
+      <div class="form-group">
+        <label for="nm">Pin</label>
+        <input type="text" class="form-control" name="pin" placeholder="Enter pin" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+{% endif %}
+<br/>
+<a href="/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go Back to Home Page</a>
+<br/>
+{% endblock %}

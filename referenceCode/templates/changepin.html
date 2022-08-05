@@ -1,0 +1,107 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>user</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <head>-->
+<!--        <title>Home page</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <h1>Hello world!!</h1>-->
+<!--        <h3>How are you doing today??</h3>-->
+<!--&lt;!&ndash;allow u to type in any variable or any information that is going to be-->
+<!--passed into this template&ndash;&gt;-->
+<!--        {% for i in content: %}-->
+<!--            <p>hello {{i}}</p>-->
+<!--        {% endfor %}-->
+<!--        <p>Another variable {{var}}</p>-->
+<!--        <br/>-->
+<!--        <p>can write python code</p>-->
+<!--        {% for x in range(10): %}-->
+<!--            {% if x%2 == 0: %}-->
+<!--                <p>hello for {{x}}</p>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--        <br/>-->
+<!--    </body>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+
+{% block content %}
+{% if not control: %}
+    <br/>
+    <h1 class="display-4">
+      Change of pin
+      <small class="text-muted">First create a new pin</small>
+    </h1>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+            {% for msg in messages: %}
+                <div><span class="{{alert}}" role="alert">
+                    {{msg}}
+                </span></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br/>
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="password">New Password</label>
+        <input type="text" class="form-control" name="newpass" placeholder="New Password">
+      </div>
+      <div class="form-group">
+        <label for="password">Verify New Password</label>
+        <input type="text" class="form-control" name="verifynewpass" placeholder="Verify New Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+{% endif %}
+<!---->
+<!---->
+{% if control: %}
+    <br/>
+    <h1 class="display-4">
+      Change of pin
+      <small class="text-muted">Edit your pin</small>
+    </h1>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+            {% for msg in messages: %}
+                <div><span class="{{alert}}" role="alert">
+                    {{msg}}
+                </span></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br/>
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="password">Old Password</label>
+        <input type="text" class="form-control" name="oldpass" placeholder="Old Password">
+      </div>
+      <div class="form-group">
+        <label for="password">New Password</label>
+        <input type="text" class="form-control" name="newpass" placeholder="New Password">
+      </div>
+      <div class="form-group">
+        <label for="password">Verify New Password</label>
+        <input type="text" class="form-control" name="verifynewpass" placeholder="Verify New Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+{% endif %}
+<br/>
+<a href="/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go Back to Home Page</a>
+<br/>
+{% endblock %}
