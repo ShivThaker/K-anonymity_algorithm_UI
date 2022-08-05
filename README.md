@@ -1,1 +1,2 @@
 # K-anonymity_algorithm_UI
+Made a Secured Data Encryption System using Python language and it stores details in the encrypted form of the user ensuring security for the user. The Hash function prevents the Man in Middle attack. We created the dataset from the frontend that we implemented, and that dataset we used is completely anonymized and secured in encrypted form using the Flash algorithm with the Amnesia tool. It can be implemented in the real world for personal use.
